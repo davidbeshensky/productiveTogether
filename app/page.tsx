@@ -1,3 +1,4 @@
+'use client'
 import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import GroupGoalCards from "./components/GroupGoalCards"
@@ -14,11 +15,11 @@ export default function Home() {
         {/* I think I need to link to a page that renders the signIn element */}
       </SignedOut>
       <SignedIn>
-        <div className="fixed top-1 right-5">
-          <UserButton />
+        <div className="flex flex-row">        
+          <PersonalGoals />
+          <GroupGoalCards />
         </div>
-        <PersonalGoals />
-        <GroupGoalCards />
+
       </SignedIn>
     </main>
   )

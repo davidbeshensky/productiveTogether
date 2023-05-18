@@ -1,31 +1,3 @@
-// import React from "react";
-
-// interface GoalCards {
-//   title: string;
-//   content: string;
-// }
-
-// const Card: React.FC<GoalCards> = ({ title, content }) => (
-//   <div
-//     className="border-2 p-2 m-2 rounded-lg bg-blue-500 hover:bg-green-500 shadow-2xl transition duration-300 ease-in-out transform hover:scale-105 hover:opacity-75"
-//   >
-//     <div className="flex flex-col items-center justify-center">
-//       <h3 className="text-center">{title}</h3>
-//       <p>{content}</p>
-//     </div>
-//   </div>
-// );
-
-// const GoalCards: React.FC = () => (
-//   <div className="flex justify-center items-center h-screen w-screen bg-green-500">
-//     <Card title="Card 1" content="This is the content of Card 1." />
-//     <Card title="Card 2" content="This is the content of Card 2." />
-//     <Card title="Card 3" content="This is the content of Card 3." />
-//   </div>
-// );
-
-// export default GoalCards;
-
 import React from 'react';
 
 // Sample test data
@@ -71,6 +43,7 @@ const users = [
 const GroupGoalCards = () => {
   return (
     <div className="bg-green-500">
+      <h3>My Groups Goals Are...</h3>
       <div className="flex flex-wrap">
         {/* User Cards */}
         {users.map(user => (

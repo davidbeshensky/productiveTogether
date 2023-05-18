@@ -1,4 +1,6 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
+import EmojiReactions from './childComponents/EmojiReactions';
 
 // Sample test data for the logged-in user's goals
 const goals = [
@@ -7,13 +9,27 @@ const goals = [
   { id: 3, name: 'Travel across the lands' }
 ];
 
-const gratitudes = [
-    { id: 1, name: "the weather is very temperate"},
-    { id: 2, name: "people love me"},
-    { id: 3, name: "my cats are awesome"}
-]
+type Reaction = {
+    goalId: number;
+    emoji: string;
+  };
 
 const PersonalGoals = () => {
+  const [reactions, setReactions] = useState<Reaction[]>([]);
+
+  const handleReact = (goalId: number, emoji: string) => {
+    const updatedReactions = [...reactions];
+    const goalReaction = updatedReactions.find(reaction => reaction.goalId === goalId);
+
+    if (goalReaction) {
+      goalReaction.emoji = emoji;
+    } else {
+      updatedReactions.push({ goalId, emoji });
+    }
+
+    setReactions(updatedReactions);
+  };
+
   return (
     <div className="bg-red-500">
       <div className="p-4">
@@ -30,17 +46,7 @@ const PersonalGoals = () => {
               </div>
             ))}
           </div>
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-xl font-semibold text-black">Today I am grateful for...</h3>
-          </div>
-          <div className="p-4 text-black">
-            {/* Primary Gratitudes */}
-            {gratitudes.map((gratitude, index) => (
-              <div key={index} className="flex items-center mb-2">
-                <span>{gratitude.name}</span>
-              </div>
-            ))}
-          </div>
+          <EmojiReactions reactions={reactions} onReact={handleReact} />
         </div>
       </div>
     </div>
